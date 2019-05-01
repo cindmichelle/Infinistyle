@@ -17,7 +17,7 @@ class Admin_model extends CI_Model {
     }
 
     public function get_order(){
-        $query = "SELECT * FROM order";
+        $query = "SELECT * FROM orders";
         $result = $this->db->query($query);
 
         return $result->result_array();
