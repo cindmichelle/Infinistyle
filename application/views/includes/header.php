@@ -6,7 +6,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-6 col-md-8 px-5">
                         <!-- Brand Logo -->
-                        <img src="<?php echo base_url('/argon/assets/img/brand/white.png');?>" alt="Infinistyle" style="height:25%;">
+                        <img src="<?php echo base_url('\argon\assets\img\logo\Logo.png');?>" alt="Infinistyle" style="height:25%;">
                         <!-- Clothing Categories -->
                         <ul class="nav nav-pills nav-fill flex-column flex-sm-row mt-3" id="tabs-text" role="tablist">
                             <li class="nav-item">

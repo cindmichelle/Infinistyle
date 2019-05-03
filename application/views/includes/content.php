@@ -10,14 +10,10 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="argon/assets/img/1.png" alt="First slide">
-                <!--<div class="carousel-caption d-none d-md-block">
-                    <h5>Shop New Fashion</h5>
-                    <p>Th best deals ever</p>
-                </div>-->
+                <img class="d-block w-100" src="argon/assets/img/1.png" alt="First slide" width:"100%" height="56.25%">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="argon/assets/img/2.png" alt="Third slide">
+                <img class="d-block w-100" src="argon/assets/img/2.png" alt="Third slide"  width:"100%" height="56.25%">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -30,12 +26,33 @@
         </a>
     </div>
     <!-- Shop Now -->
-    <button type="button" class="btn btn-secondary btn-lg btn-block">SHOP NOW</button>
+    <!-- <button type="button" class="btn btn-secondary btn-lg btn-block">SHOP NOW</button> -->
     <!-- Product Cards -->
     <div class="container mt-5">
           <div class="row justify-content-center">
-            <div class="col-lg-12">
-              <div class="row row-grid">
+            <div class="col-md-12">
+                <div class="card-group">
+                <?php foreach($result as $card){ ?>
+                    <div class="col-md-3">
+
+                        <div class="card card-lift--hover shadow border-0">
+                            <img src="<?php echo $card['productImage'] ?>" alt="<?php echo $card['productName']?>">
+                            <div class="card-body py-5">
+                                <h4 class="text-primary text-uppercase"><?php echo $card['productName']?></h4>
+                                <p class="description mt-3"><?php echo $card['productDescription']?></p>
+                                <div class="product-price font-weight-bold mb-3">
+                                  <span>Rp <?php echo $card['productPrice']?></span>
+                                </div>
+                                <button class="btn btn-icon btn-3 btn-primary" type="button">
+                                    <span class="btn-inner--text" href="<?php echo "#"?>">Details</span>
+                                </button>
+                            </div>
+                        </div>
+                        </div>
+
+                <?php } ?>
+                </div>
+              <!-- <div class="row row-grid">
                 <div class="col-lg-3">
                   <div class="card card-lift--hover shadow border-0">
                     <img class="card-img-top" src="argon/assets/img/product1.jpg" alt="Card image cap">
@@ -96,69 +113,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row row-grid">
-                <div class="col-lg-3">
-                  <div class="card card-lift--hover shadow border-0">
-                    <img class="card-img-top" src="argon/assets/img/product4.png" alt="Card image cap">
-                    <div class="card-body py-5">
-                      <h4 class="text-primary text-uppercase">100% Pure Eye Cream</h4>
-                      <p class="description mt-3">Caffeine infused eye cream</p>
-                      <div class="product-price font-weight-bold mb-3">
-                        <span>Rp 299,000</span>
-                      </div>
-                      <button class="btn btn-icon btn-3 btn-primary" type="button">
-                        <span class="btn-inner--text">Details</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="card card-lift--hover shadow border-0">
-                    <img class="card-img-top" src="argon/assets/img/product5.jpg" alt="Card image cap">
-                    <div class="card-body py-5">
-                      <h4 class="text-primary text-uppercase">Maybelline Mascara</h4>
-                      <p class="description mt-3">Full lashes everyday</p>
-                      <div class="product-price font-weight-bold mb-3">
-                        <span>Rp 670,000</span>
-                      </div>
-                      <button class="btn btn-icon btn-3 btn-primary" type="button">
-                        <span class="btn-inner--text">Details</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="card card-lift--hover shadow border-0">
-                    <img class="card-img-top" src="argon/assets/img/product6.jpg" alt="Card image cap">
-                    <div class="card-body py-5">
-                      <h4 class="text-primary text-uppercase">Goods Wallet</h4>
-                      <p class="description mt-3">Minimalistic white-grey wallet</p>
-                      <div class="product-price font-weight-bold mb-3">
-                        <span>Rp 200,000</span>
-                      </div>
-                      <button class="btn btn-icon btn-3 btn-primary" type="button">
-                        <span class="btn-inner--text">Details</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="card card-lift--hover shadow border-0">
-                    <img class="card-img-top" src="argon/assets/img/product7.jpg" alt="Card image cap">
-                    <div class="card-body py-5">
-                      <h4 class="text-primary text-uppercase">Origins Cleanser</h4>
-                      <p class="description mt-3">Anti aging cleanser</p>
-                      <div class="product-price font-weight-bold mb-3">
-                        <span>Rp 250,000</span>
-                      </div>
-                      <button class="btn btn-icon btn-3 btn-primary" type="button">
-                        <span class="btn-inner--text">Details</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </div>-->
             </div>
           </div>
         </div>

@@ -1,6 +1,9 @@
-<body class="bg-default g-sidenav-show g-sidenav-pinned" data-gr-c-s-loaded="true">
+<body class="bg-secondary g-sidenav-show g-sidenav-pinned" data-gr-c-s-loaded="true">
     <!-- Navbar -->
-    <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light bg-gradient-info">
+    <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light bg-gradient-primary">
+        <a class="navbar-brand" href="#">
+            <img src="argon\assets\img\logo\Logo.png" width="150" height="50" alt="">
+        </a>
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-lable="Toggle Navigation"><span class="navbar-toggler-icon"></button>
             <div id="navbar-collapse" class="navbar-collapse navbar-custom-collapse collapse">
@@ -13,18 +16,38 @@
             </div>
         </div>
     </nav>
+    <ul class="nav justify-content-center mt-3 mb-3">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Tops</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Bottoms</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Dresses</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Jumpsuits</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Accessories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Toys</a>
+      </li>
+    </ul>
     <!-- Content -->
     <div class="main-content">
         <!-- Header -->
-        <div class="header bg-gradient-info py-7 py-lg-8 pt-lg-9">
+        <!-- <div class="header bg-gradient-info py-7 py-lg-8 pt-lg-9">
             <div class="container">
                 <div class="header-body text-center mb-5">
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-6 col-md-8 px-5">
                             <!-- Brand Logo -->
-                            <img src="<?php echo base_url('/argon/assets/img/brand/white.png');?>" alt="Infinistyle">
+                            <!-- <img src="<?php echo base_url('argon\assets\img\logo\Logo.png');?>" alt="Infinistyle"> -->
                             <!-- Clothing Categories -->
-                            <ul class="nav nav-pills nav-fill flex-column flex-sm-row mt-3" id="tabs-text" role="tablist">
+                            <!-- <ul class="nav nav-pills nav-fill flex-column flex-sm-row mt-3" id="tabs-text" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" data-toggle="tab" href="#tabs-text-1" role="tab" aria-controls="tabs-text-1" aria-selected="true">Tops</a>
                                 </li>
@@ -42,7 +65,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- Page Content -->
         <!-- Carousel -->
         <!-- Shop Now -->

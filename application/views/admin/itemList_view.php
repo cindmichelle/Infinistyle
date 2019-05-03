@@ -49,7 +49,7 @@
                     <th scope="col">Stock</th>
                     <th scope="col">Price</th>
                     <th scope="col">Image</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -68,9 +68,6 @@
                     <td class="text-right">
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal">
                             Edit
-                        </button>
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal">
-                            Delete
                         </button>
                           <!-- Modal Edit -->
                         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">

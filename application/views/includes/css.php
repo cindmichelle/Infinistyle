@@ -1,5 +1,5 @@
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="<?php echo base_url('argon/assets/img/brand/blue.png');?>">
+<link rel="icon" type="image/png" href="<?php echo base_url('argon\assets\img\logo\LogoTab.png');?>">
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 <!-- Icons -->
