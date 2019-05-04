@@ -450,7 +450,7 @@
                                         <small>Product</small>
                                     </div>
                                     <?php foreach($edit as $e) { ?>
-                                    <form action="<?= base_url('admin/edit_action'); ?>" method="post">
+                                    <form action="<?= base_url('admin/products/update_product'); ?>" method="post">
                                         <div class="card-body card-block">
                                             <div class="form-group">
                                                 <label for="id" class=" form-control-label">ID</label>

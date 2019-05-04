@@ -87,7 +87,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Save changes</button>
+                                <button type="button" class="btn btn-success" onclick="window.location = '<?php echo base_url('admin/customers/update_customer')?>'">Save changes</button>
                               </div>
                             </div>
                           </div>
@@ -108,7 +108,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Save changes</button>
+                                <button type="button" class="btn btn-success" onclick="window.location = '<?php echo base_url('admin/customers/delete_customer')?>'">Save changes</button>
                               </div>
                             </div>
                           </div>
