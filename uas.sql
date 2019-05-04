@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 28, 2019 at 07:24 AM
+-- Host: localhost
+-- Generation Time: May 04, 2019 at 08:29 PM
 -- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `uas`
+-- Database: `infinistyle`
 --
 
 -- --------------------------------------------------------
@@ -45,10 +45,10 @@ INSERT INTO `admin` (`adminID`, `fullName`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Table structure for table `customers`
 --
 
-CREATE TABLE `customer` (
+CREATE TABLE `customers` (
   `customerID` int(11) NOT NULL,
   `fullName` varchar(200) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -59,27 +59,14 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `customer`
+-- Dumping data for table `customers`
 --
 
-INSERT INTO `customer` (`customerID`, `fullName`, `email`, `username`, `password`, `address`, `phone`) VALUES
+INSERT INTO `customers` (`customerID`, `fullName`, `email`, `username`, `password`, `address`, `phone`) VALUES
 (1, 'Jon Snow', 'snow.jon@westeros.ws', 'JonSnow', '778124c645e584859816f0192675d7c3', 'The North', '302210312'),
 (2, 'Arya Stark', 'arya.stark@westeros.ws', 'AryaStark', 'bb5cc2bbd90a5d9bb81ce454d66d940c', 'House Stark', '42342354'),
 (3, 'Daenerys Targaryen', 'daenerys@westeros.ws', 'DanyDragon', '83e92bb9a278410a0584b7d49bbccdb7', 'Winterfell', '1233432'),
 (4, 'Cersei Lannister', 'cersei.lannister@westeros.ws', 'Lannister', '72545f3f86fad045a26ed54abd2bbb9f', 'Kings Landing', '123342');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order`
---
-
-CREATE TABLE `order` (
-  `orderID` int(11) NOT NULL,
-  `orderDate` date NOT NULL,
-  `orderStatus` varchar(50) NOT NULL,
-  `customerID` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -96,10 +83,30 @@ CREATE TABLE `orderdetails` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Table structure for table `orders`
 --
 
-CREATE TABLE `product` (
+CREATE TABLE `orders` (
+  `orderID` int(11) NOT NULL,
+  `orderDate` date NOT NULL,
+  `orderStatus` varchar(50) NOT NULL,
+  `customerID` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`orderID`, `orderDate`, `orderStatus`, `customerID`) VALUES
+(1, '2019-05-04', '\"on process\"', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
   `productID` int(11) NOT NULL,
   `productName` varchar(100) NOT NULL,
   `productDescription` varchar(300) NOT NULL,
@@ -110,10 +117,10 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `product`
+-- Dumping data for table `products`
 --
 
-INSERT INTO `product` (`productID`, `productName`, `productDescription`, `productPrice`, `productStock`, `productCategory`, `productImage`) VALUES
+INSERT INTO `products` (`productID`, `productName`, `productDescription`, `productPrice`, `productStock`, `productCategory`, `productImage`) VALUES
 (1, 'Flower Zora Shirt', 'A Flowery Shirt with an Italian touch', 79000, 10, 'Tops', 'P001.jpg'),
 (2, 'Rags-A-Muffin Dress', 'With Cute on top', 89000, 10, 'Dress', 'P002.jpg'),
 (3, 'Rags-A-Muffin Tops', 'Cute', 79000, 10, 'Tops', 'P003.jpg'),
@@ -132,17 +139,6 @@ INSERT INTO `product` (`productID`, `productName`, `productDescription`, `produc
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shoppingcart`
---
-
-CREATE TABLE `shoppingcart` (
-  `cartID` int(11) NOT NULL,
-  `customerID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `shoppingcartdetails`
 --
 
@@ -150,6 +146,17 @@ CREATE TABLE `shoppingcartdetails` (
   `cartID` int(11) NOT NULL,
   `productID` int(11) NOT NULL,
   `qty` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shoppingcarts`
+--
+
+CREATE TABLE `shoppingcarts` (
+  `cartID` int(11) NOT NULL,
+  `customerID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -164,29 +171,29 @@ ALTER TABLE `admin`
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `customer`
+-- Indexes for table `customers`
 --
-ALTER TABLE `customer`
+ALTER TABLE `customers`
   ADD PRIMARY KEY (`customerID`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `order`
+-- Indexes for table `orders`
 --
-ALTER TABLE `order`
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`orderID`);
 
 --
--- Indexes for table `product`
+-- Indexes for table `products`
 --
-ALTER TABLE `product`
+ALTER TABLE `products`
   ADD PRIMARY KEY (`productID`);
 
 --
--- Indexes for table `shoppingcart`
+-- Indexes for table `shoppingcarts`
 --
-ALTER TABLE `shoppingcart`
+ALTER TABLE `shoppingcarts`
   ADD PRIMARY KEY (`cartID`);
 
 --
@@ -200,27 +207,27 @@ ALTER TABLE `admin`
   MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT for table `customers`
 --
-ALTER TABLE `customer`
+ALTER TABLE `customers`
   MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT for table `orders`
 --
-ALTER TABLE `order`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `orders`
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT for table `products`
 --
-ALTER TABLE `product`
+ALTER TABLE `products`
   MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `shoppingcart`
+-- AUTO_INCREMENT for table `shoppingcarts`
 --
-ALTER TABLE `shoppingcart`
+ALTER TABLE `shoppingcarts`
   MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
