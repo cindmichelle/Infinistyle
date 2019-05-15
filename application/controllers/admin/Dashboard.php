@@ -1,13 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH.'controllers/user/Login.php';
 
-class Dashboard extends CI_Controller {
+class Dashboard extends Login {
 
     public function __construct(){
         parent::__construct();
     }
 
     public function index(){
+        $this->check_is_login();
         $this->load->model('Admin_model');
         $dt['title'] = "Dashboard";
         $data['css'] = $this->load->view('includes/css.php', NULL, TRUE);
