@@ -25,22 +25,15 @@
           <div class="text-muted text-center mt-2 mb-2"><strong>Sign In</strong></div>
         </div>
         <div class="card-body px-lg-5 py-lg-5">
-<<<<<<< HEAD:application/views/includes/shop/login.php
         <!--FORM-->
-=======
           <?php echo form_open('user/login/login_validation'); ?>
->>>>>>> add login and regist ctrlr:application/views/includes/login.php
           <form role="form">
             <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-<<<<<<< HEAD:application/views/includes/shop/login.php
                 <input class="form-control" placeholder="Username" type="text" name="username" id="username">
-=======
-                <input class="form-control" placeholder="Username" type="text" name="username">
->>>>>>> add login and regist ctrlr:application/views/includes/login.php
               </div>
             </div>
             <div class="form-group">
@@ -48,11 +41,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-<<<<<<< HEAD:application/views/includes/shop/login.php
                 <input class="form-control" placeholder="********" type="password" name="password" id="password">
-=======
-                <input class="form-control" placeholder="Password" type="password" name="password">
->>>>>>> add login and regist ctrlr:application/views/includes/login.php
               </div>
             </div>
             <div class="text-center">

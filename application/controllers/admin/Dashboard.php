@@ -7,10 +7,15 @@ class Dashboard extends Login {
     public function __construct(){
         parent::__construct();
     }
-
+    
     public function index(){
-        $this->check_is_login();
         $this->load->model('Admin_model');
+
+        $this->check_is_login('admin');
+        
+        $params= $this->session->flashdata('admin_param');
+        $data["message"] = $params != false ? $params : null;
+        
         $dt['title'] = "Dashboard";
         $data['css'] = $this->load->view('includes/css.php', NULL, TRUE);
         $data['js'] =  $this->load->view('includes/js.php', NULL, TRUE);

@@ -22,13 +22,14 @@ class Customer_model extends CI_Model {
             return false;
         } 
         else {
-            return $query->result_array();
+            return $query->row();
         }
     }
 
     public function insert_customer($data){
-        print_r($this->db->insert('customers',$data));
-
+        $insert = $this->db->insert('customers',$data);
+        $response =  $this->db->error();
+        return $response;
     }
 
     public function update_customer($data){

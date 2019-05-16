@@ -11,23 +11,39 @@ class Login extends CI_Controller {
     $this->load->library('form_validation');
 
     //load session library
-    $this->load->library('session');
+    $this->load->library('Session');
   }
   
   public function index(){
     $data['css'] = $this->load->view('includes/css.php', NULL, TRUE);
     $data['js'] = $this->load->view('includes/js.php', NULL, TRUE);
-    $data['nav'] = $this->load->view('includes/nav.php', NULL, TRUE);
-    $data['footer'] = $this->load->view('includes/footer.php', NULL, TRUE);
-    $data['login'] =  $this->load->view('includes/login.php', NULL, TRUE);
+    $data['nav'] = $this->load->view('includes/shop/nav.php', NULL, TRUE);
+    $data['footer'] = $this->load->view('includes/shop/footer.php', NULL, TRUE);
+    $data['login'] =  $this->load->view('includes/shop/login.php', NULL, TRUE);
     
-    $this->load->view('pages/signIn_view', $data);
+    $this->load->view('pages/shop/signIn_view', $data);
   }
 
-  public function check_is_login(){
-    if(!(isset($this->session->userdata['logged_in']))){
+  public function check_is_login($role){
+    if(!(isset($this->session->userdata['logged_in_infinistyle']))){
       redirect('user/login'); 
     }
+    $session_data = $this->session->userdata['logged_in_infinistyle'];
+    if($session_data['role'] != $role){
+      //kirim param message :  mesti login dulu sebagai $role
+      redirect('user/login');
+    }
+  }
+
+  public function generate_session($username, $role ){
+    $session_data = array(
+      'username' => $username,
+      'status' => 'login',
+      'role' => $role,
+      );
+
+    // add data user ke session
+    $this->session->set_userdata('logged_in_infinistyle', $session_data);
   }
 
   public function login_validation(){
@@ -47,27 +63,18 @@ class Login extends CI_Controller {
       $this->load->model('Admin_model');
       $result_admin = $this->Admin_model->get_admin($data);
       if($result_admin){
-        $session_data = array(
-          'username' => $result_admin->username,
-          'password' => $result_admin->password,
-          );
-          
-        // add data user ke session
-        $this->session->set_userdata('logged_in', $session_data);
+        $this->generate_session($result_admin->username, 'admin');
+        $this->session->set_flashdata('admin_param', 'Login as Admin success!');
         redirect('admin/dashboard');
       }
 
       $this->load->model('Customer_model');
       $result_customer = $this->Customer_model->get_customer($data);
       if($result_customer){
-        $session_data = array(
-          'username' => $result_customer[0]->username,
-          'password' => $result_customer[0]->password,
-          );
-          
-        // add data user ke session
-        $this->session->set_userdata('logged_in', $session_data);
-        // $this->load->view('admin_page'); //TODO ganti ke user page
+        $this->generate_session($result_customer->username, 'customer');
+        $this->session->set_flashdata('collections_param', 'Login as Customer success!');
+        redirect('shop/collections');
+        // TODO : mau ngapain
       }
     }
   }
