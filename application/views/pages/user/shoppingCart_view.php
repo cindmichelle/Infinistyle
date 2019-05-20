@@ -5,12 +5,17 @@
         <title>Profile</title>
         <?php echo $css; ?>
     </head>
+    <body>
         <?php
             echo $navbar;
             echo $cart;
             echo $footer;
         ?>
-    <body>
         <?php echo $js; ?>
+        <script>
+            $(document).ready(function(){
+                console.log('ha')
+            })
+        </script>
     </body>
 </html>

@@ -1,6 +1,6 @@
 <!-- Argon Scripts -->
-<!-- Core -->
 <script src="<?php echo base_url('argon/assets/vendor/jquery/dist/jquery.min.js');?>"></script>
+<!-- Core -->
 <script src="<?php echo base_url('argon/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js');?>"></script>
 <!-- Optional JS -->
 <script src="<?php echo base_url('argon/assets/vendor/chart.js/dist/Chart.min.js');?>"></script>

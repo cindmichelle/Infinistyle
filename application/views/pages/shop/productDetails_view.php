@@ -11,6 +11,6 @@
             echo $details;
             echo $footer;
         ?>
-    </body>
         <?php echo $js; ?>
+    </body>
 </html>
