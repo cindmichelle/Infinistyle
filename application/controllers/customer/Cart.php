@@ -9,8 +9,17 @@ class Cart extends Login{
     }
 
     public function index(){
-        //$this->load->model('Customer_model')
         $this->check_is_login('customer');
+        $cart['cartID'] = $this->get_cart_id();
+
+        $this->load->model('shoppingCartDetails_model');
+        $cart_response = $this->shoppingCartDetails_model->get_shoppingCartDetails_per_cartID($cart);
+        echo "<pre>";
+        print_r($cart_response);
+        echo "</pre>";
+        
+        //tinggal masukkin kesini
+        // $data['shopping_cart'] = 
         $data['css'] = $this->load->view('includes/css.php', NULL, TRUE);
         $data['navbar'] = $this->load->view('includes/shop/header_logged', NULL, TRUE);
         $data['cart'] = $this->load->view('includes/user/shoppingCart', NULL, TRUE);
@@ -42,12 +51,12 @@ class Cart extends Login{
             
             //if cart already exist
             if($cart_response != false){
-                echo "cart already exist for user " . $customer->customerID;
+                // echo "cart already exist for user " . $customer->customerID;
                 return $cart_response->cartID;
                 // print_r($cart_response);  //stdClass Object ( [cartID] => 1 [customerID] => 5 )
             }
             else{
-                echo "making a new cart for user" . $customer->customerID;
+                // echo "making a new cart for user" . $customer->customerID;
                 $cart_response = $this->shoppingCart_model->insert_shoppingCart($cart_params);
                 // ADD ERROR HANDLING !!
                 // print_r($cart_response);
@@ -57,28 +66,42 @@ class Cart extends Login{
         }
     }
 
-    public function add_product_to_cart($data){
-        print_r($data);
-        // $cartID = $this->get_cart_id();
+    public function add_product_to_cart(){
 
-        // if($cartID == false){
-        //     $error = array(
-        //         "code" => 2024,
-        //         "message" => "Cart tidak ditemukan."
-        //     );
-        //     return  $error;
-        // }
+        $this->form_validation->set_rules('productID', 'productID', 'trim|required');
+        $this->form_validation->set_rules('quantity', 'quantity', 'trim|required');
+        
+        if ($this->form_validation->run() == FALSE) {
+            // TODO
+        }
+        else {
+            $cartID = $this->get_cart_id();
+            
+            if($cartID == false){
+                $error = array(
+                    "code" => 2024,
+                    "message" => "Cart tidak ditemukan."
+                );
+                return  $error;
+            }
+                
+            $add_cart_detail_params = array(
+                "cartID" => $cartID,
+                "productID" => $this->input->post('productID'),
+                "qty" => $this->input->post('quantity')
+            );
+            
+            $this->load->model('ShoppingCartDetails_model');
+            
+            $result = $this->ShoppingCartDetails_model->insert_shoppingCartDetails($add_cart_detail_params);
 
-        // $add_cart_detail_params = array(
-        //     "cartID" => $cartID,
-        //     "productID" => $data['productID'],
-        //     "qty" => $data['qty']
-        // );
-
-        // $this->load->model('ShoppingCartDetails_model');
-
-        // $result = $this->ShoppingCartDetails_model->insert_shoppingCartDetails($add_cart_detail_params);
-        // print_r($result);
+            if($result['code'] == 0){ // RESULT OK
+                redirect('customer/cart');
+            }
+            else {
+                alert('add to cart fails');
+            }
+        }
     }
 }
 

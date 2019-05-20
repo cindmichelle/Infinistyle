@@ -41,14 +41,17 @@
             <p class="card-text text-center"><?php echo $product[0]->productCategory?></p>
             <p class="card-text text-center"><?php echo "Rp ".number_format($product[0]->productPrice)?></p>
             <center>
+            <?php echo form_open('customer/cart/add_product_to_cart'); ?>
                 <div class="col-3 mb-3">
-                    <input class="form-control" type="number" value="1" id="qty">
+                <input type="hidden" name="productID" value="<?php echo $product[0]->productID;?>" />
+                    <label>quantity : </label> 
+                    <input class="form-control" type="number" value="1" id="qty" name="quantity">
                  </div>
-                <button class="btn btn-icon btn-3 btn-primary" type="button">
-                <button id="<?php echo $product[0]->productID?>" class="btn btn-icon btn-3 btn-primary add-to-cart" type="button">
+                <button id="<?php echo $product[0]->productID?>" class="btn btn-icon btn-3 btn-primary add-to-cart" type="submit">
                     <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
                     <span class="btn-inner--text">Add To Cart</span>
                 </button>
+          <?php echo form_close(); ?>
             </center>
           </div>
         </div>

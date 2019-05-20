@@ -3,31 +3,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ShoppingCartDetails_model extends CI_Model {
     public function get_all_shoppingCartDetails(){
-        $query = "SELECT * FROM shoppingcartsdetails";
+        $query = "SELECT * FROM shoppingcartdetails";
         $result = $this->db->query($query);
 
         return $result->result_array();
     }
 
     public function get_shoppingCartDetails_per_cartID($data){
-        $condition = "cartID =" . "'" . $data['cartID'] . "'";
-        $this->db->select('*');
-        $this->db->from('shoppingcartsdetails');
-        $this->db->where($condition);
+        $query = 
+        "SELECT p.productName as name, 
+                p.productImage as image,
+                p.productPrice as price,
+                cd.qty as quantity 
+        FROM shoppingcartdetails as cd 
+        JOIN products as p ON (cd.productID = p.productID)
+        WHERE cartID =" . "'" . $data['cartID'] . "'";
 
-        $query = $this->db->get();
+        $result = $this->db->query($query);
 
-        if ($query->num_rows() == 0) {
-            return false;
-        } 
-        else {
-          return $query->result_array();
-        }
+        return $result->result_array();
     }
 
     
     public function insert_shoppingCartDetails($data){
-        $insert = $this->db->insert('shoppingcarts',$data);
+        $insert = $this->db->insert('shoppingcartdetails',$data);
         $response =  $this->db->error();
         return $response;
     }
