@@ -8,17 +8,38 @@ class Shoppingcart_model extends CI_Model {
 
         return $result->result_array();
     }
-    
-    public function insert_customer($item){
-        $this->db->insert('shoppingcarts',$item);
+
+    public function get_shoppingCart($data){
+        $condition = "customerID =" . "'" . $data['customerID'] . "'";
+        $this->db->select('*');
+        $this->db->from('shoppingcarts');
+        $this->db->where($condition);
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 0) {
+            return false;
+        } 
+        else {
+            return $query->row();
+        }
     }
 
-    public function update_customer($item){
+    
+    public function insert_shoppingCart($data){
+        $insert = $this->db->insert('shoppingcarts',$data);
+        $response =  $this->db->error();
+        return $response;
+    }
+
+    public function update_shoppingCart($item){
         $this->db->update('shoppingcarts',$item,"cartID = ".$item["cartID"]);
     }
 
-    public function delete_customer($item){
-      $this->db->where('customerID', $item);
+    public function delete_shoppingCart($item){
+      $this->db->where('cartID', $item['cartID']);
       $this->db->delete('shoppingcarts');
     }
 }
+?>

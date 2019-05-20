@@ -47,7 +47,6 @@ class Login extends CI_Controller {
   }
 
   public function login_validation(){
-    // UDAH JALAN
     $this->form_validation->set_rules('username', 'Username', 'trim|required');
     $this->form_validation->set_rules('password', 'Password', 'trim|required');
     
